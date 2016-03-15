@@ -1,0 +1,26 @@
+html {
+  
+}
+body {
+  background-color:#C5C4DF;
+  color:white;
+  font-family:courier;
+  text-shadow: 2px 1px #46464f;
+  font-size: 30px;
+  font-weight: bold;
+}
+h1 {
+  text-align: center;
+  padding: 40px 0px 40px 0px;
+  font-size: 80px;
+}
+ul:hover {
+  text-shadow: 2px 1px #db8ab1;
+  
+}
+ul {
+  text-align:left;
+  margin: 0.5% 35% 0%;
+  /*if onlibe change to another color*/
+  background-color:#eeccff;
+}
