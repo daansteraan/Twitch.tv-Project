@@ -7,48 +7,49 @@ var streamAPI = "https://api.twitch.tv/kraken/streams/";
 /*this one to be used later to get details of stream as well as avatar*/
 var channelAPI = "https://api.twitch.tv/kraken/channels";
 
-
 /*function to fill the grid on the page - GOOD*/
 function populateGrid(users) {
 	var html = '';
-	
 	/*for loop that takes each value in the list provided and puts it on the page in the form of an unordered list*/
 	for (i=0; i<users.length; i++) {
 		$(".user-list").html(html += "<ul>"+users[i] + "</ul>")	
 	};
 };
 
+/* populateGrid(all); <-- simple test: this works fine.*/
+
 /*takes a user, returns boolean value of online/offline status*/
+
 function isOnline(user) {
 	  $.getJSON(streamAPI + user + "?callback=?", function(data){	
 	    
       var available = data.stream;        	    
 		  /*redundancy?*/
 		  if (available) {
-        online.push(user);
+        console.log(user + " is online");
+        return true;
       } else {
-        offline.push(user)
+        console.log(user + " is offline");
+        return false;
       };
 	  });
+  
 };  
 
-function isOnlineTest(group){
-  group.forEach(function(i){
-    isOnline(i);
-  });
-}
-
-/*Create online & offline lists globally - perhaps later to move into display() function*/
 var online = [];
 var offline = [];
 
-all.forEach(function(user) {
-  isOnline(user);
-  
-})
+all.forEach(function(i){
+  if (isOnline(i) == true) {
+    online.push(i);
+  }else{
+    offline.push(i);
+  };
+  });
 
-console.log("on: " + online);
-console.log("off: " + offline);
+console.log("online: " + online);
+console.log("offline: " + offline);
+
 
 
 /*main purpose of this function is to display the correct list of users*/
